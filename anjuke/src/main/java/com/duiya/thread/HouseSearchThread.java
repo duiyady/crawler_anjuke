@@ -17,8 +17,8 @@ import com.duiya.utils.HttpUtils;
 import com.duiya.utils.MyBatisUtil;
 
 public class HouseSearchThread extends Thread {
-	ExecutorService pool = Executors.newFixedThreadPool(5);
-	ExecutorService pool1 = Executors.newFixedThreadPool(10);
+	ExecutorService pool = Executors.newFixedThreadPool(10);
+	ExecutorService pool1 = Executors.newFixedThreadPool(5);
 	@Override
 	public void run() {
 		boolean flag = true;
