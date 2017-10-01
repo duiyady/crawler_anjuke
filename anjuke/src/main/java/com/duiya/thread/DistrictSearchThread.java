@@ -103,7 +103,7 @@ public class DistrictSearchThread extends Thread {
  * 			<div class="left-cont fl">
  * 				<div class="buy-house tab-contents" id="content_Rd1">
  * 					<div class="clearfix">
- * 					<div class="details float_l"></div>
+ * 						<div class="details float_l"></div>
  * 						<div class="details float_l">
  * 							<div class="areas">
  * 								<a> </a>

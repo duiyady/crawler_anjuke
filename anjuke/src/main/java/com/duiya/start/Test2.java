@@ -1,67 +1,85 @@
 package com.duiya.start;
 
-import java.util.concurrent.locks.Condition;
-import java.util.concurrent.locks.ReentrantLock;
+import java.util.LinkedList;
 
-/**
- * 测试静态房方法
- * @author duiya
- *
- */
 public class Test2 {
 	public static void main(String[] args) {
-		new DaThread().start();
-		new DbThread().start();
+//		new T2ThreadA().start();
+//		new T2ThreadB().start();
+		new T2ThreadC().start();
+		new T2ThreadD().start();
+	}
+}
+class T2ThreadA extends Thread{
+	@Override
+	public void run() {
+		T2Util.test1();
+	}
+}
+class T2ThreadB extends Thread{
+	@Override
+	public void run() {
+		T2Util.test2();
+	}
+}
+class T2ThreadC extends Thread{
+	@Override
+	public void run() {
+		T2Util.test3();
+	}
+}
+class T2ThreadD extends Thread{
+	@Override
+	public void run() {
+		T2Util.test4();
 	}
 }
 
-class DaThread extends Thread{
-	@Override
-	public void run() {
-		Dataa.add();
-	}
-}
-class DbThread extends Thread{
-	@Override
-	public void run() {
-		Dataa.dda();
-	}
-}
-
-class Dataa{
-	private static ReentrantLock look = new ReentrantLock();
-	private static Condition condition = look.newCondition();
-	private static ReentrantLock look2 = new ReentrantLock();
-	private static Condition condition2 = look2.newCondition();
-	public static void add() {
-		try{
-			look.lock();
-		//	System.out.println("等待前");
-		//	condition.await();
-		//	System.out.println("醒来后");
-			for(int i = 0;i<20;i++) {
-				
-				System.out.println("进来了add");
-				System.out.println("add测试");
-			}
-		}catch (Exception e) {
-			// TODO: handle exception
-		}finally {
-			look.unlock();
+class T2Util{
+	public synchronized static void test1() {
+		System.out.println(Thread.currentThread().getName() + "访问test1");
+		try {
+			Thread.currentThread().sleep(5000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
-	public static void dda() {
-		try{
-			look2.lock();
-			for(int i = 0;i<20;i++) {
-				System.out.println("进来了dda==========");
-				System.out.println("dda测试===========");
-			}
-			//condition.signalAll();
-		}catch (Exception e) {
-			// TODO: handle exception
-		}finally {
-			look2.unlock();
+	
+	public synchronized static void test2() {
+		System.out.println(Thread.currentThread().getName() + "访问test2");
+		try {
+			Thread.currentThread().sleep(5000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public static LinkedList<String> list = new LinkedList<String>();
+	
+	public static void test3() {
+		synchronized (T2Util.list) {
+			list.add("aaa");
+			System.out.println(Thread.currentThread().getName() + "访问test3");
+		}
+		try {
+			Thread.currentThread().sleep(5000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	public static void test4() {
+		synchronized (T2Util.list) {
+			list.add("aaa");
+			System.out.println(Thread.currentThread().getName() + "访问test4");
+		}
+		try {
+			Thread.currentThread().sleep(5000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 }

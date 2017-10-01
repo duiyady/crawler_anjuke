@@ -38,12 +38,12 @@ public class CitySearchThread extends Thread {
 						}
 					}
 				}
+				System.out.println("城市搜索完成");
 			}catch (Exception e) {
 				System.out.println("网页被拦截了");
 			}finally {
 				// 标志搜索所有的城市完成
 				DataList.cityFlag = false;
-				System.out.println("城市搜索完成");
 			}
 		}else {
 			// 标志搜索所有的城市完成
@@ -60,6 +60,17 @@ public class CitySearchThread extends Thread {
  * 				<div class="letter_city">
  * 					<ul>
  * 						<li>
+ * 							 <div class="city_list">
+ *                       		<a href="" class="hot"></a>
+ *                       		<a href="" class="hot"></a>
+ *                       	</div>
+ *                       </li>
+ *                       <li>
+ * 							 <div class="city_list">
+ *                       		<a href="" class="hot"></a>
+ *                       		<a href="" class="hot"></a>
+ *                       	</div>
+ *                       </li>
  * 					</ul>
  * 				</div>
  *			</div>
