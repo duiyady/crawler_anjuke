@@ -1,5 +1,6 @@
 # crawler_anjuke
 这个项目是爬取安居客上面所有楼盘。
+
 ##说明
 - **com.duiya.mapper是mybatis的mapper文件**
 - **com.duiya.model是实体类**
